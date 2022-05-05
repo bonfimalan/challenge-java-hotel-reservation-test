@@ -1,3 +1,8 @@
+/**
+ * Hotel.java
+ * 
+ * @author Alan Bonfim Santos
+ */
 public class Hotel {
     private String name;
     private int regularWeekdayPrice;
@@ -16,6 +21,15 @@ public class Hotel {
         this.rate = rate;
     }
 
+    /**
+     * Calculates the price of the reservation based in the client type and the day, that can be
+     * a weekday or a weekend day
+     * 
+     * @param clientType The type of the client
+     * @param days The days that the client chose for a reservation
+     * 
+     * @return The price for the reservation
+     */
     public int calculatePrice(String clientType, String... days) {
         int price = 0;
 
@@ -26,6 +40,7 @@ public class Hotel {
                 case "sun":
                     price += clientType.equals("Regular") ? regularWeekendPrice : rewardWeekendPrice;
                     break;
+                // in case it is a weekday
                 default:
                     price += clientType.equals("Regular") ? regularWeekdayPrice : rewardWeekdayPrice;
             }// end switch

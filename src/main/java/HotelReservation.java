@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class HotelReservation {
     private Hotel[] hotels;
 
@@ -48,30 +50,37 @@ public class HotelReservation {
     }
 
     /**
-     * Methood to find the name of the 3 days
+     * Methood to find the name of the days the client chose
      * 
      * @param input A char arrray with the whole input message
      * 
-     * @return The three days the client chose
+     * @return The days the client chose
      */
     private String[] findDays(char[] input) {
-        String[] days = new String[3];
-        int dayIndex = 0;
+        ArrayList<String> days = new ArrayList<>();
+        String temp;
 
         // threre's no need to start the i with 0
         for(int i=7; i < input.length; i++) {
             if(input[i] == '('){
                 i++; // goes to the next char, that is the first char of the day string
-                days[dayIndex] = "";
+                temp = "";
                 while (input[i] != ')'){
-                    days[dayIndex] += input[i];
+                    temp += input[i];
                     i++;
                 }//end while
-                dayIndex++;
+                days.add(temp);
             }//end if
         }//end for
 
-        return days;
+        // Pass all the days in the ArrayList to an array, since the toArray() methood
+        // don't returns a String array but an Object array
+        String[] daysStringArray = new String[days.size()];
+        for (int i=0; i<days.size(); i++) {
+            daysStringArray[i] = days.get(i);
+        }
+
+        return daysStringArray;
     }
 
     /**
@@ -79,7 +88,7 @@ public class HotelReservation {
      * to calculate the price of the reservation in the 3 hotels
      * 
      * @param clientType A String with the type of the client
-     * @param days The three days the client chose
+     * @param days The days the client chose
      * 
      * @return An int array with the price of each hotel, the position in the int array is
      *         relative to the Hotel array position

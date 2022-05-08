@@ -30,6 +30,6 @@ public class FailingTest {
    @Test
    public void test6() {
        HotelReservation Hotel = new HotelReservation();
-       assertEquals("Lakewood", Hotel.getCheapestHotel("Rewards: 25Mar2009(wed), 26Mar2009(thur), 27Mar2009(fri), 28Mar2009(sat)"));
+       assertEquals("Ridgewood", Hotel.getCheapestHotel("Rewards: 26Mar2009(thur), 27Mar2009(fri), 28Mar2009(sat), 29Mar2009(sun)"));
    }
 }

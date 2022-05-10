@@ -10,7 +10,7 @@ public class HotelReservation {
         this.hotels = new Hotel[3];
         this.hotels[0] = new Hotel("Lakewood", 110, 90, 80, 80, 3);
         this.hotels[1] = new Hotel("Bridgewood", 160, 60, 110, 50, 4);
-        this.hotels[2] = new Hotel("Ridgewood", 220, 150, 100, 40, 4);
+        this.hotels[2] = new Hotel("Ridgewood", 220, 150, 100, 40, 5);
     }
 
     /**
@@ -39,7 +39,7 @@ public class HotelReservation {
      * 
      * @return The client type ("Regular" or "Reward")
      */
-    private String findClientType(char[] input) {
+    public String findClientType(char[] input) {
         String clientType = "";
         for(char character : input) {
             if (character == ':') 
@@ -56,7 +56,7 @@ public class HotelReservation {
      * 
      * @return The days the client chose
      */
-    private ArrayList<String> findDays(char[] input) {
+    public ArrayList<String> findDays(char[] input) {
         ArrayList<String> days = new ArrayList<>();
         String temp;
 
@@ -86,7 +86,7 @@ public class HotelReservation {
      * @return An int array with the price of each hotel, the position in the int array is
      *         relative to the Hotel array position
      */
-    private int[] calculatePrices(String clientType, ArrayList<String> days) {
+    public int[] calculatePrices(String clientType, ArrayList<String> days) {
         int[] prices = new int[3];
         int index = 0;
 
@@ -107,7 +107,7 @@ public class HotelReservation {
      * 
      * @return The name of the cheapest hotel
      */
-    private String findCheapestHotel(int[] prices) {
+    public String findCheapestHotel(int[] prices) {
         int chepeastPrice = prices[0];
         int chepeastHotelIndex = 0;
         

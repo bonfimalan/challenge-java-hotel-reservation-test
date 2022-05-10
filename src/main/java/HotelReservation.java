@@ -23,7 +23,7 @@ public class HotelReservation {
     public String getCheapestHotel (String input) {
         String clientType = findClientType(input.toCharArray());
 
-        String[] days = findDays(input.toCharArray());
+        ArrayList<String> days = findDays(input.toCharArray());
 
         int[] prices = calculatePrices(clientType, days);
 
@@ -56,7 +56,7 @@ public class HotelReservation {
      * 
      * @return The days the client chose
      */
-    private String[] findDays(char[] input) {
+    private ArrayList<String> findDays(char[] input) {
         ArrayList<String> days = new ArrayList<>();
         String temp;
 
@@ -73,14 +73,7 @@ public class HotelReservation {
             }//end if
         }//end for
 
-        // Pass all the days in the ArrayList to an array, since the toArray() methood
-        // don't returns a String array but an Object array
-        String[] daysStringArray = new String[days.size()];
-        for (int i=0; i<days.size(); i++) {
-            daysStringArray[i] = days.get(i);
-        }
-
-        return daysStringArray;
+        return days;
     }
 
     /**
@@ -93,7 +86,7 @@ public class HotelReservation {
      * @return An int array with the price of each hotel, the position in the int array is
      *         relative to the Hotel array position
      */
-    private int[] calculatePrices(String clientType, String[] days) {
+    private int[] calculatePrices(String clientType, ArrayList<String> days) {
         int[] prices = new int[3];
         int index = 0;
 

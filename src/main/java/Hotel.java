@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Hotel.java
  * 
@@ -30,7 +32,7 @@ public class Hotel {
      * 
      * @return The price for the reservation
      */
-    public int calculatePrice(String clientType, String... days) {
+    public int calculatePrice(String clientType, ArrayList<String> days) {
         int price = 0;
 
         for(String day : days) {
